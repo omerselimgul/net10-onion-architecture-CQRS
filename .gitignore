@@ -1,0 +1,51 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docview
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET
+wwwroot/lib/
+
+# Environment & Secrets
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+*.env
+.env
+
+# Claude
+.claude/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Rider
+.idea/
+
+# VSCode
+.vscode/
+
+# Test Results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
