@@ -299,11 +299,11 @@ static class Configuration
 
 `Persistence` katmanında bulunur çünkü `ServiceRegistration` buradan okur. Migration komutu çalıştırılırken CWD `Persistence` klasörüdür, `appsettings.json` ise `Api` projesindedir — göreli yol bu yüzden `../../Presentation/ECommercialApi.Api`.
 
-`appsettings.json` içinde şu yapı olmalı:
+`appsettings.Development.json` içinde şu yapı olmalı (git'e eklenmez, her geliştirici kendi oluşturur):
 ```json
 {
   "ConnectionStrings": {
-    "PostgreSQL": "Host=localhost;Port=5432;Database=ecommercial;Username=postgres;Password=sifren"
+    "PostgreSQL": "User ID=postgres;Password=SIFREN;Host=localhost;Port=5432;Database=ECommercialApiDb;Pooling=true;"
   }
 }
 ```
@@ -342,7 +342,24 @@ ProductsController
 
 ---
 
-## Çalıştırma
+## Kurulum
+
+**Gereksinimler:** .NET 10 SDK, PostgreSQL
+
+```bash
+git clone https://github.com/omerselimgul/net10-onion-architecture-CQRS.git
+cd net10-onion-architecture-CQRS
+```
+
+`Presentation/ECommercialApi.Api/` klasörüne `appsettings.Development.json` dosyası oluştur:
+
+```json
+{
+  "ConnectionStrings": {
+    "PostgreSQL": "User ID=postgres;Password=SIFREN;Host=localhost;Port=5432;Database=ECommercialApiDb;Pooling=true;"
+  }
+}
+```
 
 ```bash
 # Migration uygula
@@ -352,11 +369,17 @@ dotnet ef database update \
 
 # Projeyi başlat
 dotnet run --project Presentation/ECommercialApi.Api
-
-# Yeni migration ekle
-dotnet ef migrations add mig_2 \
-  --project Infrastructure/ECommercialApi.Persistence \
-  --startup-project Presentation/ECommercialApi.Api
 ```
 
 Swagger: `https://localhost:{port}/swagger`
+
+---
+
+## Diğer Komutlar
+
+```bash
+# Yeni migration ekle
+dotnet ef migrations add MigrationAdi \
+  --project Infrastructure/ECommercialApi.Persistence \
+  --startup-project Presentation/ECommercialApi.Api
+```
