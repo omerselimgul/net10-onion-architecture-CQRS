@@ -347,7 +347,7 @@ ProductsController
 **Gereksinimler:** .NET 10 SDK, PostgreSQL
 
 ```bash
-git clone https://github.com/omerselimgul/net10-onion-architecture-CQRS.git
+git clone repourl
 cd net10-onion-architecture-CQRS
 ```
 
